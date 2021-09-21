@@ -24,6 +24,7 @@ jobs:
         run: |
           echo MINVERBUILDMETADATA=$(git rev-parse --short ${GITHUB_SHA})  >> $GITHUB_ENV
           TAG_COMMIT=$(git rev-list --tags --max-count=1)
+          echo ${TAG_COMMIT}
           echo IMAGE_VERSION_TAG=$(git describe --tags --abbrev=0 ${TAG_COMMIT})  >> $GITHUB_ENV
         shell: bash
 
