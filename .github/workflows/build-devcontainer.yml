@@ -49,3 +49,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: pre cache the image
+        uses: github/codespaces-precache@v1.0.1
+        with:
+          regions: WestUs2 EastUs WestEurope SouthEastAsia
+          sku_name: basicLinux32gb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
