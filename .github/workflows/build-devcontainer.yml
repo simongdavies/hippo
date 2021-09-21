@@ -52,7 +52,7 @@ jobs:
       - name: pre cache the image
         uses: github/codespaces-precache@v1.0.1
         with:
-          regions: WestUs2
-          sku_name: standardLinux32gb
+          regions: WestUs2 EastUs WestEurope SouthEastAsia
+          sku_name: basicLinux32gb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
