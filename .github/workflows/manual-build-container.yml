@@ -57,9 +57,9 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=semver,pattern={{raw}},priority=1,value={{ env.IMAGE_VERSION_TAG }}
-            type=semver,pattern={{version}},priority=2,value={{ env.IMAGE_VERSION_TAG }}
-            type=semver,pattern={{major}}.{{minor}},priority=3,value={{ env.IMAGE_VERSION_TAG }}
+            type=semver,pattern={{raw}},priority=1,value=${{ env.IMAGE_VERSION_TAG }}
+            type=semver,pattern={{version}},priority=2,value=${{ env.IMAGE_VERSION_TAG }}
+            type=semver,pattern={{major}}.{{minor}},priority=3,value=${{ env.IMAGE_VERSION_TAG }}
             type=sha,priority=4
           flavor: |
             latest=true
