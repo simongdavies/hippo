@@ -23,7 +23,7 @@ jobs:
       - name: Set MINVERBUILDMETADATA and Image Version Tag
         run: |
           echo MINVERBUILDMETADATA=$(git rev-parse --short ${GITHUB_SHA})  >> $GITHUB_ENV
-          echo IMAGE_VERSION_TAG=$(git describe --tags $(git rev-list --tags=v[0-9] --max-count=1) --abbrev=0)  >> $GITHUB_ENV
+          echo IMAGE_VERSION_TAG=$(git describe --tags --match "v*" --abbrev=0)  >> $GITHUB_ENV
         shell: bash
 
       - name: Npm build
