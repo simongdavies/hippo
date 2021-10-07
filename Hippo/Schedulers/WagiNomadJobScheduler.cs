@@ -84,7 +84,7 @@ namespace Hippo.Schedulers
 
         private static string JobDefinition(Channel c)
         {
-            var name = $"{c.Application.Name}-{c.Name}";
+            var name = $"{c.Application.Name}-{c.Name}".Replace(" ", "").Replace(":", "-");
             var bindle = $"{c.Application.StorageId}/{c.ActiveRevision.RevisionNumber}";
             var env = String.Join(' ', c.GetEnvironmentVariables().Select(ev => $"\"--env\", \"{ev.Key}='{ev.Value}'\","));
 

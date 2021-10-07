@@ -16,15 +16,6 @@ require consul
 require traefik
 require vault
 
-cleanup() {
-  echo
-  echo "Sutting down services"
-  kill $(jobs -pr)
-  wait
-}
-
-trap cleanup EXIT
-
 rm -rf ./data
 mkdir -p log
 
@@ -84,6 +75,12 @@ done
 echo "Starting traefik..."
 traefik --configfile traefik/traefik.toml >log/traefik.log &
 
+echo "export CONSUL_ADDR=http://${IP_ADDRESS}:8500" >> ~/.bashrc
+echo "export NOMAD_ADDR=http://127.0.0.1:4646"  >> ~/.bashrc
+echo "export VAULT_ADDR=${VAULT_ADDR}"  >> ~/.bashrc
+echo "export VAULT_TOKEN=$(<data/vault/token)"  >> ~/.bashrc
+echo "export VAULT_UNSEAL=$(<data/vault/unseal)"  >> ~/.bashrc
+
 echo
 echo "Dashboards"
 echo "----------"
@@ -101,8 +98,3 @@ echo "    export NOMAD_ADDR=http://127.0.0.1:4646"
 echo "    export VAULT_ADDR=${VAULT_ADDR}"
 echo "    export VAULT_TOKEN=$(<data/vault/token)"
 echo "    export VAULT_UNSEAL=$(<data/vault/unseal)"
-echo
-echo "Ctrl+C to exit."
-echo
-
-wait

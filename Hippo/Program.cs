@@ -20,7 +20,7 @@ namespace Hippo
     {
         // TODO get value from configuration.
         public static string JobScheduler => Environment.GetEnvironmentVariable("HIPPO_JOB_SCHEDULER")?.ToUpperInvariant() ?? default;
-
+        public static string ProxyPort => ":8088";
         public static void Main(string[] args)
         {
             var tasks = new List<Task>();
