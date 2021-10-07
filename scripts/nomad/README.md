@@ -39,5 +39,3 @@ Once the app has been published you should be able to navigate to it from the en
 - Nomad -  http://localhost:4646/ui
 - Consul - http://localhost:8500/ui/
 - Vault - http://localhost:8200
-
-**Note** Vault UI is not exposed in WSL.
